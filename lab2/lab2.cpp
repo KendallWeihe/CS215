@@ -15,7 +15,7 @@
     -- Loop over each digit from least-significant-bit to most-significant-bit
     -- Check if digit is not binary -- if not output error and return 1
     -- Multiply digit by 2^i -- the binary place value and add to decimal_value
-    -- Output converted value and return 0 
+    -- Output converted value and return 0
 */
 
 #include <iostream>
@@ -37,6 +37,7 @@ int main(){
 
   if (string_length != 8){
     cout << "That is not an 8-digit value!\n\n";
+    system("pause");
     return 1;
   }
   else {
@@ -46,6 +47,7 @@ int main(){
         binary_digit = stoi(binary_input.substr(i,1));
         if (binary_digit != 0 && binary_digit != 1){
           cout << "This is not a binary number!\n\n";
+          system("pause");
           return 1;
         }
         decimal_value += pow(2,string_length-1-i) * binary_digit;
@@ -55,6 +57,7 @@ int main(){
       }
 
       cout << "Converted to decimal: " << decimal_value << "\n" << endl;
+      system("pause");
       return 0;
 
   }
