@@ -147,6 +147,6 @@ int main() {
 		cin >> playAgain;
 	} while (playAgain == 'Y' || playAgain == 'y');
 
-	system("pause");
+	//system("pause");
 	return 0;
 }
