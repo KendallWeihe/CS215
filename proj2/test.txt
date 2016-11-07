@@ -1,0 +1,11 @@
+CS215-401	3	1	2	7
+20 50
+Sally	Adams	1234567	6
+87
+20	48
+John	Appleseed	2345678	5
+78
+16	42
+Latoya	Jackson	3456789	6
+93
+19	50	
