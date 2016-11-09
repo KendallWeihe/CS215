@@ -1,11 +1,14 @@
-CS215-401	3	1	2	7
-20 50
-Sally	Adams	1234567	6
-87
-20	48
-John	Appleseed	2345678	5
-78
-16	42
-Latoya	Jackson	3456789	6
-93
-19	50	
+CS215-401 4 3 3 8
+20 50 75
+John Appleseed 2345678 6
+78 87 87
+16 42 65
+Latoya Jackson 3456789 7
+93 98 79
+19 50 68
+Kendall Weihe 123 6
+87 100 95
+20 50 65
+Alb Einstein 456 7
+100 99 97
+18 49 69
