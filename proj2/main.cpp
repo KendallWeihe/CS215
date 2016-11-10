@@ -110,9 +110,24 @@ void print_logo(){
 }
 
 //-----------------------------------------------------------------------------------------------------------
+//											print_menu
+//-----------------------------------------------------------------------------------------------------------
+// Print the main menu of the program
+void print_menu(){
+  // the menu options are defined in the specifications
+  cout << "A – Add student" << endl;
+  cout << "D – Drop student" << endl;
+  cout << "E – Enter class grades" << endl;
+  cout << "P – Print class report" << endl;
+  cout << "V – View student record" << endl;
+  cout << "S - Save" << endl;
+  cout << "X – Exit" << endl;
+}
+
+//-----------------------------------------------------------------------------------------------------------
 //											read_gradebook_headers
 //-----------------------------------------------------------------------------------------------------------
-// Read the first line, or headers, of the input test file
+// Read the first line (the headers) of the input test file
 void read_gradebook_headers(gradebook &gb, ifstream &file){
   // read in headers -- defined in the specs
   file >> gb.class_name;
@@ -121,10 +136,10 @@ void read_gradebook_headers(gradebook &gb, ifstream &file){
   file >> gb.num_projects;
   file >> gb.num_days;
 
-  double temp;
+  double possible_points;
   for (int i = 0; i < gb.num_projects; i++){ // loop over the possible project points
-    file >> temp;
-    gb.possible_project_points.push_back(temp);
+    file >> possible_points;
+    gb.possible_project_points.push_back(possible_points);
   }
 }
 
@@ -182,21 +197,6 @@ char compute_letter_grade(float p) { // function taken from the program provided
 	if (p >= 70) return 'C';
 	if (p >= 80) return 'D';
 	return 'E';
-}
-
-//-----------------------------------------------------------------------------------------------------------
-//											print_menu
-//-----------------------------------------------------------------------------------------------------------
-// Print the main menu of the program
-void print_menu(){\
-  // the menu options are defined in the specifications
-  cout << "A – Add student" << endl;
-  cout << "D – Drop student" << endl;
-  cout << "E – Enter class grades" << endl;
-  cout << "P – Print class report" << endl;
-  cout << "V – View student record" << endl;
-  cout << "S - Save" << endl;
-  cout << "X – Exit" << endl;
 }
 
 //-----------------------------------------------------------------------------------------------------------
@@ -272,13 +272,13 @@ int find_student_index(vector<student> &students){
       return i;
     }
   }
-  return -1;
+  return -1; // case where the student was not found
 }
 
 //-----------------------------------------------------------------------------------------------------------
 //											enter_class_grades
 //-----------------------------------------------------------------------------------------------------------
-// enter new glass grades -- could be tests, projects, or attendance
+// enter new class grades -- could be tests, projects, or attendance
 void enter_class_grades(vector<student> &students, gradebook &gb){
   cout << "Enter Test, Project, or Attendance data? (T/P/A): ";
   char user_input;
@@ -309,7 +309,7 @@ void enter_test_grades(vector<student> &students, gradebook &gb){
 }
 
 //-----------------------------------------------------------------------------------------------------------
-//											printClass
+//											enter_project_grades
 //-----------------------------------------------------------------------------------------------------------
 // enter a new project grades -- called by enter_class_grades
 void enter_project_grades(vector<student> &students, gradebook &gb){
