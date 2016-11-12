@@ -91,7 +91,7 @@ int main(){
       case 'P': print_class_report(students, gb); break;
       case 'V': view_student_record(students, gb); break;
       case 'S': save(filename, students, gb); break;
-      case 'X': user_input = 'Q'; break;
+      case 'X': user_input = 'Q'; save(filename, students, gb); break;
       default: cout << "Input not recognized"; break;
     }
   }
@@ -158,21 +158,31 @@ void read_students(vector<student> &students, gradebook &gb, ifstream &file){
 
     // read test scores
     double temp_score, test_scores = 0.0;
-    for (int j = 0; j < gb.num_tests; j++){
-      file >> temp_score;
-      test_scores += (temp_score / 100);
-      new_student.test_scores.push_back(temp_score);
+    if (gb.num_tests == 0){
+      test_scores = 1;
     }
-    test_scores = test_scores / gb.num_tests;
+    else {
+      for (int j = 0; j < gb.num_tests; j++){
+        file >> temp_score;
+        test_scores += (temp_score / 100);
+        new_student.test_scores.push_back(temp_score);
+      }
+      test_scores = test_scores / gb.num_tests;
+    }
 
     // read the project scores
     double project_scores = 0.0;
-    for (int j = 0; j < gb.num_projects; j++){
-      file >> temp_score;
-      project_scores += (temp_score / gb.possible_project_points[j]);
-      new_student.project_scores.push_back(temp_score);
+    if (gb.num_projects == 0){
+      project_scores = 1;
     }
-    project_scores = project_scores / gb.num_projects;
+    else {
+      for (int j = 0; j < gb.num_projects; j++){
+        file >> temp_score;
+        project_scores += (temp_score / gb.possible_project_points[j]);
+        new_student.project_scores.push_back(temp_score);
+      }
+      project_scores = project_scores / gb.num_projects;
+    }
 
     // calculate attendance and grade averages
     double overall_grade, attendance_score;
@@ -216,26 +226,38 @@ void add_student(vector<student> &students, gradebook &gb){
 
   // read test scores
   double temp_score, test_scores = 0;
-  for (int i = 0; i < gb.num_tests; i++){
-    cout << "Enter the score for test #" << i+1 << ": ";
-    cin >> temp_score;
-    test_scores += temp_score;
-    new_student.test_scores.push_back(temp_score);
+  if (gb.num_tests == 0){
+    test_scores = 1;
+  }
+  else {
+    for (int i = 0; i < gb.num_tests; i++){
+      cout << "Enter the score for test #" << i+1 << ": ";
+      cin >> temp_score;
+      test_scores += temp_score / 100;
+      new_student.test_scores.push_back(temp_score);
+    }
+    test_scores = test_scores / gb.num_tests;
   }
 
   // read project scores
-  double project_scores;
-  for (int i = 0; i < gb.num_projects; i++){
-    cout << "Enter the score for project #" << i+1 << ": ";
-    cin >> temp_score;
-    project_scores += temp_score / gb.possible_project_points[i];
-    new_student.project_scores.push_back(temp_score);
+  double project_scores = 0;
+  if (gb.num_projects == 0){
+    project_scores = 1;
+  }
+  else {
+    for (int i = 0; i < gb.num_projects; i++){
+      cout << "Enter the score for project #" << i+1 << ": ";
+      cin >> temp_score;
+      project_scores += temp_score / gb.possible_project_points[i];
+      new_student.project_scores.push_back(temp_score);
+    }
+    project_scores = project_scores / gb.num_projects;
   }
 
   // calculate averages
   double overall_grade, attendance_score;
-  new_student.test_average = (test_scores / 100) / gb.num_tests;
-  new_student.project_average = project_scores / gb.num_projects;
+  new_student.test_average = test_scores;
+  new_student.project_average = project_scores;
   new_student.attendance_average = new_student.num_days_attended / gb.num_days;
   overall_grade = (0.5 * new_student.test_average) + (0.4 * new_student.project_average) + (0.1 * new_student.attendance_average);
   new_student.grade_percentage = overall_grade;

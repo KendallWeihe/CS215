@@ -1,0 +1,14 @@
+CS215-401 4 0 1 8
+20 
+John Appleseed 2345678 6
+
+16 
+Latoya Jackson 3456789 7
+
+19 
+Kendall Weihe 123 6
+
+20 
+Alb Einstein 456 7
+
+18 
