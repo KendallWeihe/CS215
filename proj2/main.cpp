@@ -1,3 +1,13 @@
+//----------------------------------------------------------------------
+// gradebook delux
+//----------------------------------------------------------------------
+// Author: Kendall Weihe
+// Course: CS215 – Fall 2016
+// Date: November 11, 2016
+//
+// This program allows the user to interactively edit a previously saved gradebook
+//----------------------------------------------------------------------
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -112,6 +122,8 @@ void print_logo(){
 //-----------------------------------------------------------------------------------------------------------
 //											print_menu
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: none
+// Returns: nothing
 // Print the main menu of the program
 void print_menu(){
   // the menu options are defined in the specifications
@@ -127,6 +139,8 @@ void print_menu(){
 //-----------------------------------------------------------------------------------------------------------
 //											read_gradebook_headers
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: gradebook and file descriptor
+// Returns: nothing
 // Read the first line (the headers) of the input test file
 void read_gradebook_headers(gradebook &gb, ifstream &file){
   // read in headers -- defined in the specs
@@ -146,6 +160,8 @@ void read_gradebook_headers(gradebook &gb, ifstream &file){
 //-----------------------------------------------------------------------------------------------------------
 //										  read_students
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector, gradebook, file descriptor
+// Returns: nothing
 // Read the student information from the text file -- make use of header info from read_gradebook_headers
 void read_students(vector<student> &students, gradebook &gb, ifstream &file){
   for (int i = 0; i < gb.num_students; i++){ // loop over all the students in the text file
@@ -200,6 +216,8 @@ void read_students(vector<student> &students, gradebook &gb, ifstream &file){
 //-----------------------------------------------------------------------------------------------------------
 //											compute_letter_grade
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: grade percentage as float
+// Returns: grade as character
 // returns the letter grade given a grade percentage
 char compute_letter_grade(float p) { // function taken from the program provided on the website
 	if (p >= 90) return 'A';
@@ -212,6 +230,8 @@ char compute_letter_grade(float p) { // function taken from the program provided
 //-----------------------------------------------------------------------------------------------------------
 //											add_student
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector, gradebook
+// Returns: nothing
 // add a new student to the gradebook
 void add_student(vector<student> &students, gradebook &gb){
   student new_student; // declare a new student
@@ -269,6 +289,8 @@ void add_student(vector<student> &students, gradebook &gb){
 //-----------------------------------------------------------------------------------------------------------
 //											drop_student
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector
+// Return: nothing
 // drop a student from the gradebook
 void drop_student(vector<student> &students){
   int student_index;
@@ -284,6 +306,8 @@ void drop_student(vector<student> &students){
 //-----------------------------------------------------------------------------------------------------------
 //											find_student_index
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector
+// Returns: index of the student that is found, or -1 if not found
 // search for a student and return the index
 int find_student_index(vector<student> &students){
   string fname, lname;
@@ -300,6 +324,8 @@ int find_student_index(vector<student> &students){
 //-----------------------------------------------------------------------------------------------------------
 //											enter_class_grades
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector, gradebook
+// Returns: nothing
 // enter new class grades -- could be tests, projects, or attendance
 void enter_class_grades(vector<student> &students, gradebook &gb){
   cout << "Enter Test, Project, or Attendance data? (T/P/A): ";
@@ -316,6 +342,8 @@ void enter_class_grades(vector<student> &students, gradebook &gb){
 //-----------------------------------------------------------------------------------------------------------
 //											enter_test_grades
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector, gradebook
+// Returns: nothing
 // enter a new test grades -- called by enter_class_grades
 void enter_test_grades(vector<student> &students, gradebook &gb){
   cout << "Enter scores for Test " << gb.num_tests+1 << endl;
@@ -333,6 +361,8 @@ void enter_test_grades(vector<student> &students, gradebook &gb){
 //-----------------------------------------------------------------------------------------------------------
 //											enter_project_grades
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector, gradebook
+// Returns: nothing
 // enter a new project grades -- called by enter_class_grades
 void enter_project_grades(vector<student> &students, gradebook &gb){
   gb.num_projects = gb.num_projects+1; // increment the number of projects
@@ -353,6 +383,8 @@ void enter_project_grades(vector<student> &students, gradebook &gb){
 //-----------------------------------------------------------------------------------------------------------
 //											enter_attendance_grades
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector, gradebook
+// Returns: nothing
 // enter a new attendance for class and each student
 void enter_attendance_grades(vector<student> &students, gradebook &gb){
   cout << "Enter 0=Absent or 1=Present for each student:\n";
@@ -370,6 +402,8 @@ void enter_attendance_grades(vector<student> &students, gradebook &gb){
 //-----------------------------------------------------------------------------------------------------------
 //											recalculate_grades
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector, gradebook
+// Returns: nothing
 // recalculate_grades individual student grades adter entering a new grade (enter_class_grades)
 void recalculate_grades(vector<student> &students, gradebook &gb){
   for (int i = 0; i < students.size(); i++){ // iterate over all students
@@ -397,6 +431,8 @@ void recalculate_grades(vector<student> &students, gradebook &gb){
 //-----------------------------------------------------------------------------------------------------------
 //											print_class_report
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector, gradebook
+// Returns: nothing
 // print the entire class report
 void print_class_report(vector<student> &students, gradebook &gb){
   // print the header info
@@ -445,6 +481,8 @@ void print_class_report(vector<student> &students, gradebook &gb){
 //-----------------------------------------------------------------------------------------------------------
 //											view_student_record
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector, gradebook
+// Returns: nothing
 // view individual student record -- finds student then calls print_student_record
 void view_student_record(vector<student> &students, gradebook &gb){
   int student_index;
@@ -460,6 +498,8 @@ void view_student_record(vector<student> &students, gradebook &gb){
 //-----------------------------------------------------------------------------------------------------------
 //											print_student_record
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: students vector, gradebook
+// Returns: nothing
 // print individual student record
 void print_student_record(student &s, gradebook &gb){
   cout << fixed << setprecision(1);
@@ -477,6 +517,8 @@ void print_student_record(student &s, gradebook &gb){
 //-----------------------------------------------------------------------------------------------------------
 //											save
 //-----------------------------------------------------------------------------------------------------------
+// Arguments: filename string, students vector, gradebook 
+// Returns: nothing
 // save the document back to the same text file
 void save(string filename, vector<student> &students, gradebook &gb){
   // open the file
