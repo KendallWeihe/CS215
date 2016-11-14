@@ -30,8 +30,6 @@ int main(){
   string input_filename, output_filename;
   cout << "Enter the name of the input file: ";
   cin >> input_filename;
-  cout << "Enter the name of the output file: ";
-  cin >> output_filename;
 
   // vectors to hold player information
   vector<string> player_names;
@@ -41,12 +39,22 @@ int main(){
   // input file
   ifstream in_file;
   in_file.open(input_filename); // open
+  if (!in_file.is_open()){
+    cout << "Could not open the input file\n";
+    return 0;
+  }
   read_player_stats(in_file, player_names, num_hits, num_at_bats); // read the file data
   in_file.close(); // close
 
   // output file
+  cout << "Enter the name of the output file: ";
+  cin >> output_filename;
   ofstream out_file;
   out_file.open(output_filename); // open file
+  if (!out_file.is_open()){
+    cout << "Could not open the output file\n";
+    return 0;
+  }
   calculate_batting_averages(out_file, player_names, num_hits, num_at_bats); // calculate batting average and output to file
   out_file.close(); // close the file
 
