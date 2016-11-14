@@ -1,0 +1,27 @@
+26
+Wood_T		1	1
+Montgomery_M	2	1
+Schwarber_K	8	3
+Baez_J		59	16
+Bryant_K	56	15
+Contreras_W	34	9
+Rizzo_A	57	14
+Fowler_D	62	15
+Zobrist_B	55	13
+Arrieta_J	5	1
+Ross_D		15	3
+Russell_A	56	11
+Hendricks_K	6	1
+Soler_J		13	2
+Heyward_J	39	5
+Montero_M	11	1
+Almora_A	10	0
+Chapman_A	1	0
+Coghlan_C	7	0
+Stella_T	1	0
+Lackey_J	4	0
+Lester_J	7	0
+Edwards_C	0	0
+Grimm_J		0	0
+Rondon_H	0	0
+Strop_P		0	0
