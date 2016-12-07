@@ -20,8 +20,21 @@ node::node(int k, string d){
 }
 
 node::~node(){
-  delete left;
-  delete right;
+  if (left == NULL){
+    cout <<  "destruct: no left child" << endl;
+  }
+  else{
+    cout << "destruct: left child deleted" << endl;
+    delete left;
+  }
+
+  if (right == NULL){
+    cout <<  "destruct: no right child" << endl;
+  }
+  else {
+    cout << "destruct: right child deleted" << endl;
+    delete right;
+  }
 }
 
 void node::setKey(int k){
@@ -41,14 +54,14 @@ void node::setRight(node *n){
 }
 
 void node::print(){
-
+  cout << "key=" << key << " data=" << data << endl;
 }
 
-node node::getLeft(){
+node *node::getLeft(){
   return left;
 }
 
-node node::getRight(){
+node *node::getRight(){
   return right;
 }
 

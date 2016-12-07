@@ -18,8 +18,8 @@ class node {
     void setRight(node*);
     int getKey();
     string getData();
-    node getLeft();
-    node getRight();
+    node *getLeft();
+    node *getRight();
     void print();
   private:
     int key;
