@@ -1,0 +1,11 @@
+10
+50 fifty
+30 thirty
+70 seventy
+20 twenty
+40 forty
+60 sixty
+80 eighty
+10 ten drummers drumming
+5  five ladies dancing
+100 my project score
