@@ -7,32 +7,48 @@ using namespace std;
 Node::Node(){
   key = 0;
   data = "";
+  left = NULL;
+  right = NULL;
 }
 
-Node::Node(string d, int k){
+Node::Node(int k, string d){
   key = k;
   data = d;
+  left = NULL;
+  right = NULL;
 }
 
 Node::~Node(){
-  delete left;
-  delete right;
+  if (left != NULL)
+    delete left;
+  if (right != NULL)
+    delete right;
 }
 
 int Node::getKey(){
   return key;
 }
 
-int Node::getData(){
+string Node::getData(){
   return data;
 }
 
 Node *Node::getLeft(){
-  return left;
+  if (left == NULL){
+    return nullptr;
+  }
+  else {
+    return left;
+  }
 }
 
 Node *Node::getRight(){
-  return right;
+  if (right == NULL){
+    return nullptr;
+  }
+  else {
+    return right;
+  }
 }
 
 void Node::setKey(int k){

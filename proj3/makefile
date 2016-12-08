@@ -1,10 +1,11 @@
-OBJECTS = main.o node.o BST.o
+OBJECTS = main.o print.o node.o BST.o
 HEADERS = node.h BST.h
 
-proj3: %.o
-	g++ -g *.o -o proj3
+proj3: $(OBJECTS) #compile target
+	g++ -std=c++11 -g $^ -o $@
 
-%.o: %.cpp
-	g++ -g *.cpp -c *.o
+%.o: %.cpp $(HEADERS) #compile object files
+	g++ -std=c++11 -g -c $< -o $@
 
-
+clean: # clean older builds
+	rm -f *.o proj3

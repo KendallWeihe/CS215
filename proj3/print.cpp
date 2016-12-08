@@ -1,3 +1,10 @@
+#include <iostream>
+#include <string>
+#include "BST.h"
+#include "node.h"
+
+using namespace std;
+
 //--------------------------------------------------------------------------
 //                         printSorted
 //--------------------------------------------------------------------------
@@ -9,7 +16,7 @@ void BST::printSorted() {
 //                         printSorted
 //--------------------------------------------------------------------------
 // internal recursive version
-void BST::printSorted(node* r) {
+void BST::printSorted(Node* r) {
 	if (r == NULL) return;
 	printSorted(r->getLeft());
 	cout << r->getKey() << "=" << r->getData() << endl;
@@ -20,7 +27,7 @@ void BST::printSorted(node* r) {
 //                         printKT
 //--------------------------------------------------------------------------
 // internal recursive version of printKeyTree()
-void BST::printKT(node* r, int level) {
+void BST::printKT(Node* r, int level) {
 	if (r == NULL) {
 		cout << endl;
 		return;

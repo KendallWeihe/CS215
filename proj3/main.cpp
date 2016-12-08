@@ -49,6 +49,9 @@ char getSelection() {
 	cout << "P - Print Key Tree\n";
 	cout << "L - Print Sorted List\n";
 	cout << "R - Read From File\n";
+	cout << "N - Find the number of nodes\n";
+	cout << "B - Find the depth of the tree\n";
+	cout << "M - Find the minimum key\n";
 	cout << "X - Exit\n";
 	cout << "Enter selection: ";
 	cin >> sel;
@@ -92,6 +95,32 @@ void testStats(BST & b) {
 	cout << "Minimum Key     = " << b.minKey() << endl;
 }
 
+void findNumNodes(BST &b){
+	int n_nodes;
+	n_nodes = b.numNodes();
+	cout << "Number of nodes = " << n_nodes << endl;
+}
+
+void findMinKey(BST &b){
+	int min = b.minKey();
+	if (min == -1){
+		cout << "There were no nodes found in the tree\n";
+	}
+	else {
+		cout << "Minimum key found = " << min << endl;
+	}
+}
+
+void findDepth(BST &b){
+	int depth = b.depth();
+	if (depth == -1){
+		cout << "There were no nodes found in the tree\n";
+	}
+	else {
+		cout << "The depth of the tree = " << depth << endl;
+	}
+}
+
 //-------------------------------------------------------------------------------------
 //                                main()
 //-------------------------------------------------------------------------------------
@@ -108,6 +137,9 @@ int main() {
 		case 'P': b.printKeyTree(); break;
 		case 'L': b.printSorted();  break;
 		case 'R': loadFile(b);		break;
+		case 'N': findNumNodes(b); break;
+		case 'B': findDepth(b); break;
+		case 'M': findMinKey(b); break;
 		case 'X': cout << "Bye!\n"; break;
 		default: cout << "Invalid entry\n";
 		}

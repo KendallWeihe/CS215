@@ -10,10 +10,10 @@ class Node {
 
   public:
     Node();
-    Node(string d, int k);
+    Node(int k, string d);
     ~Node();
     int getKey();
-    int getData();
+    string getData();
     Node *getLeft();
     Node *getRight();
     void setKey(int k);
