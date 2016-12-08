@@ -6,6 +6,9 @@
 
 using namespace std;
 
+//-------------------------------------------------------------------------------------
+//                                CLASS: Node
+//-------------------------------------------------------------------------------------
 class Node {
 
   public:
@@ -23,7 +26,7 @@ class Node {
 
   private:
     int key;
-    Node *left, *right;
+    Node *left, *right; // pointers to left and right children
     string data;
 
 };
